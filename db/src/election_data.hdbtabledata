@@ -1,0 +1,24 @@
+{
+	"format_version" : 1,
+	"imports" : [{
+		"target_table" : "firstapp.db::elections.results",
+		"source_data" : {
+			"data_type" : "CSV",
+			"file_name" : "firstapp.db::elections.csv",
+			"has_header" : true,
+			"dialect" : "HANA",
+			"type_config" : {
+				"delimiter" : ";"
+				}
+		},
+		"import_settings" : {
+			"include_filter" : [],
+			"import_columns" : [
+			"state", "county", "party", "candidate", "votes"
+			]
+		},
+		"column_mapping" : {
+				"state" : 1, "county" : 2, "party" : 3, "candidate" : 4, "votes" : 5
+		}
+	}]
+}

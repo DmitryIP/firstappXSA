@@ -1,0 +1,13 @@
+namespace firstapp.db;
+
+context elections {
+
+    /*@@layout{"layoutInfo":{}}*/
+    entity results {
+        key state     : String(30) not null;
+        key county    : String(80) not null;
+            party     : String(40);
+            candidate : String(40);
+            votes     : Integer64;
+    };
+};

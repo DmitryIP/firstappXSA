@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="firstapp.db::election_result" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="election_result"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="firstapp.db::elections.results">
+    <resourceUri>firstapp.db::elections.results</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="firstapp.db::elections.results">
+  <attributes>
+    <attribute id="state" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="state"/>
+      <keyMapping columnObjectName="elections.results" columnName="state"/>
+    </attribute>
+    <attribute id="county" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="county"/>
+      <keyMapping columnObjectName="elections.results" columnName="county"/>
+    </attribute>
+    <attribute id="party" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="party"/>
+      <keyMapping columnObjectName="elections.results" columnName="party"/>
+    </attribute>
+    <attribute id="candidate" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="candidate"/>
+      <keyMapping columnObjectName="elections.results" columnName="candidate"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="CC" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="DECIMAL" expressionLanguage="SQL" length="13" scale="1">
+        <formula>&quot;votes&quot; / 20</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="votes" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="votes"/>
+      <measureMapping columnObjectName="elections.results" columnName="votes"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="90" y="105"/>
+    
+      <rectangleSize width="170"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
